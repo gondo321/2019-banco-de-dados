@@ -1,0 +1,35 @@
+import sqlite3
+
+def criar_tabela_usuario(conexao):
+
+    cursor = conexao.cursor()
+    sql = '''
+        create table if not exists usuario (
+            nome text not  null,
+            login text not null,
+            senha text not null
+
+        );
+    '''
+    cursor.execute(sql)
+###################################################
+
+
+def inserir_usuario(conexao):
+    cursor = conexao.cursor()
+    sql = '''
+        insert into usuario values ('Renan','renan.silva','123');
+    '''
+    cursor.execute(sql)
+   
+    conexao.commit()
+
+
+
+conexao = sqlite3.connect("banco.sqlite")
+
+criar_tabela_usuario(conexao)
+
+inserir_usuario(conexao)
+
+conexao.close()
