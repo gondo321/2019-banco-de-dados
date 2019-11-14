@@ -1,0 +1,1 @@
+def conferir_usuario(conexao):
